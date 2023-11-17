@@ -1,0 +1,101 @@
+{
+  "index_patterns": "hello-*",
+  "settings": {
+        "number_of_shards": 1,
+        "analysis": {
+            "char_filter": {
+                "param_char_filter": {
+                  "type": "mapping",
+                  "mappings": [
+                    "{ => (",
+                    "} => )"
+                  ]
+                }
+            },
+            "analyzer": {
+                "param_analyzer": {
+                    "type": "custom",
+                    "char_filter": [
+                        "param_char_filter"
+                    ],
+                    "tokenizer": "standard"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "dynamic_templates": [
+            {
+                "param_as_param": {
+                    "match": "param_*",
+                    "mapping": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text",
+                                "analyzer": "param_analyzer"
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "properties": {
+            "message": {
+                "type": "keyword",
+                "fields": {
+                    "analyzed": {
+                        "type": "text",
+                        "analyzer": "param_analyzer"
+                    }
+                }
+            },
+            "reason": {
+                "type": "keyword"
+            },
+            "solrhost": {
+                "type": "keyword"
+            },
+            "loglevel": {
+                "type": "keyword"
+            },
+            "shard": {
+                "type": "keyword"
+            },
+            "collection": {
+                "type": "keyword"
+            },
+            "replica": {
+                "type": "keyword"
+            },
+            "core": {
+                "type": "keyword"
+            },
+            "webapp": {
+                "type": "keyword"
+            },
+            "requesthandler": {
+                "type": "keyword"
+            },
+            "action": {
+                "type": "keyword"
+            },
+            "tags": {
+                "type": "keyword"
+            },
+            "querytime": {
+                "type": "integer"
+            },
+            "status": {
+                "type": "integer"
+            },
+            "hits": {
+                "type": "integer"
+            },
+            "timestamp": {
+                "type": "date",
+                "format": "yyyy-MM-dd HH:mm:ss.SSS"
+            }
+        }
+    }
+}

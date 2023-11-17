@@ -1,0 +1,6 @@
+{
+  "data_view": {
+     "title": "hello-*",
+     "timeFieldName" :"timestamp"
+  }
+}

@@ -1,0 +1,67 @@
+---
+
+## X-Pack settings
+# see https://www.elastic.co/guide/en/elasticsearch/reference/current/license-settings.html
+xpack.license.self_generated.type: basic
+# see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html
+# see https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
+xpack.security.enabled: true
+
+
+# --- Cluster ------------------------------------------------------------------
+# Cluster name (default name is "elasticsearch")
+
+cluster.name: docker-cluster
+
+
+# --- Node ---------------------------------------------------------------------
+# Node name (default name is the hostname of the machine)
+
+#node.name: node-1
+#node.attr.rack: r1 
+
+
+# --- Network ------------------------------------------------------------------
+# By default Elasticsearch is only accessible on localhost (bind loopback interface address 127.0.0.1).
+# Set an address of one of your host network interface to expose this node on the network.
+# 0.0.0.0 interface means allows all interfaces
+
+network.host: 0.0.0.0.0
+#http.port: 9200
+
+
+#  Discovery -------------------------------------------------------------------
+# Discovery and cluster formation settings
+
+#discovery.seed_hosts: ["host1", "host2"]
+#cluster.initial_master_nodes: ["node-1", "node-2"]
+#discovery.type=multi-node
+
+
+# ----------------------------------- Paths ------------------------------------
+# Path to directory where to store the data (separate multiple locations by comma):
+@path.data@
+
+# Path to log files:
+#
+@path.logs@
+
+
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Allow wildcard deletion of indices:
+#
+#action.destructive_requires_name: false
+
