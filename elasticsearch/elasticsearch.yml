@@ -40,11 +40,11 @@ cluster.initial_master_nodes: ["es1"]
 
 # ----------------------------------- Paths ------------------------------------
 # Path to directory where to store the data (separate multiple locations by comma):
-/var/lib/elasticsearch
+path.data: /var/lib/elasticsearch
 
 # Path to log files:
 #
-/var/log/elasticsearch
+path.logs: /var/log/elasticsearch
 
 
 # ----------------------------------- Memory -----------------------------------
