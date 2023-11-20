@@ -11,13 +11,13 @@ xpack.security.enabled: true
 # --- Cluster ------------------------------------------------------------------
 # Cluster name (default name is "elasticsearch")
 
-cluster.name: docker-cluster
+#cluster.name: my-application
 
 
 # --- Node ---------------------------------------------------------------------
 # Node name (default name is the hostname of the machine)
 
-#node.name: node-1
+node.name: es1
 #node.attr.rack: r1 
 
 
@@ -26,25 +26,25 @@ cluster.name: docker-cluster
 # Set an address of one of your host network interface to expose this node on the network.
 # 0.0.0.0 interface means allows all interfaces
 
-network.host: 0.0.0.0.0
+network.host: 0.0.0.0
 #http.port: 9200
 
 
 #  Discovery -------------------------------------------------------------------
 # Discovery and cluster formation settings
 
-#discovery.seed_hosts: ["host1", "host2"]
-#cluster.initial_master_nodes: ["node-1", "node-2"]
+discovery.seed_hosts: ["es1"]
+cluster.initial_master_nodes: ["es1"]
 #discovery.type=multi-node
 
 
 # ----------------------------------- Paths ------------------------------------
 # Path to directory where to store the data (separate multiple locations by comma):
-@path.data@
+/var/lib/elasticsearch
 
 # Path to log files:
 #
-@path.logs@
+/var/log/elasticsearch
 
 
 # ----------------------------------- Memory -----------------------------------
